@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M Kabilan — Portfolio</title>
+  <meta name="description" content="Personal portfolio of M Kabilan — projects, skills, and contact." />
+  <meta property="og:title" content="M Kabilan — Portfolio" />
+  <meta property="og:description" content="Projects, skills, experience, and contact details." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #0f172a;
+      --muted: #94a3b8;
+      --text: #e2e8f0;
+      --brand: #0ea5e9;
+      --accent: #22d3ee;
+      --ring: 0 0 0 3px rgba(14,165,233,.35);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --panel: #ffffff;
+        --muted: #475569;
+        --text: #0f172a;
+        --brand: #0284c7;
+        --accent: #06b6d4;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(14,165,233,.12), transparent 60%),
+                  radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.12), transparent 60%),
+                  var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+    }
+    .logo { font-weight: 800; letter-spacing: .5px; }
+    .chip { padding: 6px 10px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; font-size: 12px; color: var(--muted); }
+    .nav-links a { margin-left: 18px; font-weight: 600; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; border-radius: 12px;
+      padding: 12px 16px; border: 1px solid rgba(255,255,255,.12); background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    }
+    .btn-primary { border: none; background: linear-gradient(135deg, var(--brand), var(--accent)); color: #001018; font-weight: 800; }
+    .btn:focus-visible { outline: none; box-shadow: var(--ring); }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 32px; align-items: center; padding: 40px 0 24px; }
+    .hero h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.1; margin: 10px 0 8px; }
+    .hero p { color: var(--muted); font-size: clamp(16px, 1.7vw, 18px); }
+    .hero .cta { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+    .avatar {
+      width: 220px; height: 220px; border-radius: 24px;
+      background: conic-gradient(from 180deg at 50% 50%, var(--brand), var(--accent));
+      padding: 6px; box-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+    .avatar img { width: 100%; height: 100%; border-radius: 20px; display: block; object-fit: cover; background:#0a0a0a; }
+    .badges { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .badge { font-size: 12px; padding: 6px 10px; background: rgba(14,165,233,.12); border: 1px solid rgba(14,165,233,.3); color: var(--brand); border-radius: 999px; }
+
+    /* Sections */
+    section { padding: 48px 0; }
+    h2 { font-size: clamp(22px, 3.5vw, 32px); margin: 0 0 18px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .card { grid-column: span 4; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.12); padding: 18px; border-radius: 18px; }
+    .card h3 { margin: 8px 0; font-size: 18px; }
+    .card p { color: var(--muted); font-size: 14px; }
+    .card .meta { font-size: 12px; color: var(--muted); margin-top: 8px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill { padding: 8px 12px; border-radius: 999px; border: 1px dashed rgba(255,255,255,.2); font-size: 13px; }
+
+    /* Contact */
+    .contact {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;
+      background: linear-gradient(120deg, rgba(14,165,233,.08), rgba(34,211,238,.08)); border: 1px solid rgba(14,165,233,.3); border-radius: 20px; padding: 20px;
+    }
+    .contact form { display: grid; gap: 12px; }
+    input, textarea {
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,.12);
+      background: var(--panel); color: var(--text);
+    }
+    label { font-size: 13px; color: var(--muted); }
+    .socials { display:flex; gap: 12px; flex-wrap: wrap; }
+    .socials a { padding: 10px 14px; border: 1px solid rgba(255,255,255,.12); border-radius: 10px; }
+
+    /* Footer */
+    footer { color: var(--muted); font-size: 13px; padding: 32px 0 48px; text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .card { grid-column: span 6; }
+      .contact { grid-template-columns: 1fr; }
+      .avatar { width: 180px; height: 180px; }
+    }
+    @media (max-width: 640px) { .card { grid-column: span 12; } }
+  </style>
+</head>
+<body>
+  <header class="container nav" aria-label="Main">
+    <div class="logo">M <span style="color:var(--brand)">Kabilan</span></div>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#work">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a class="chip" href="#" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">Theme</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div>
+        <div class="chip" aria-label="Tagline">Developer • Builder • Learner</div>
+        <h1>Hi, I'm <span style="color:var(--brand)">M Kabilan</span> 👋</h1>
+        <p>I design and build practical solutions—websites, apps, and small-scale infrastructure. I love shipping fast, learning in public, and making useful things.</p>
+        <div class="badges" role="list" aria-label="Highlights">
+          <span class="badge">Full‑stack</span>
+          <span class="badge">Android</span>
+          <span class="badge">Automation</span>
+          <span class="badge">Cloud‑lite Hosting</span>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary" href="#contact">Contact Me</a>
+          <a class="btn" href="#work">See Projects</a>
+          <a class="btn" href="resume.pdf" download>Download Résumé</a>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <div class="avatar" aria-hidden="true">
+          <!-- Replace src with your own photo -->
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=800&auto=format&fit=crop" alt="Portrait placeholder" />
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About</h2>
+      <p>I'm a self-driven developer from India. I enjoy turning ideas into working products—whether it's a simple tool that saves time or a complete web experience. Recently, I've been experimenting with lightweight servers from old laptops, local-first apps, and clean, responsive UI systems.</p>
+    </section>
+
+    <!-- Projects -->
+    <section id="work">
+      <h2>Selected Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="chip">2025</div>
+          <h3>Mini Server for SMB</h3>
+          <p>A compact, on‑prem server concept to host a website + one e‑commerce store + private file storage for a single business.</p>
+          <div class="meta">Stack: Linux, Nginx, Docker, Next.js, PostgreSQL</div>
+        </article>
+        <article class="card">
+          <div class="chip">2025</div>
+          <h3>Instant e‑Sevai Site</h3>
+          <p>A bilingual (Tamil‑English) responsive homepage with dynamic language toggle and service sections.</p>
+          <div class="meta">Stack: HTML5, Bootstrap 5, JS</div>
+        </article>
+        <article class="card">
+          <div class="chip">2024</div>
+          <h3>Notes Summarizer (Web)</h3>
+          <p>AI‑assisted summarizer for study notes with multi‑model support and export to PDF/Docs.</p>
+          <div class="meta">Stack: Node, Python, Web Workers</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span class="skill">HTML • CSS • JS</span>
+        <span class="skill">React / Next.js</span>
+        <span class="skill">Android (No‑code/Low‑code)</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">PostgreSQL / SQLite</span>
+        <span class="skill">Nginx • Docker</span>
+        <span class="skill">Git & CI</span>
+        <span class="skill">Figma • UI Systems</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact">
+        <form onsubmit="submitForm(event)">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" required placeholder="Your name" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com" />
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Say hello…"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+          <p id="formStatus" class="chip" role="status" aria-live="polite" style="display:none;margin-top:8px"></p>
+        </form>
+        <div>
+          <p>Prefer email or socials? Reach me here:</p>
+          <div class="socials">
+            <a href="mailto:mkabilan@example.com" aria-label="Email">📧 Email</a>
+            <a href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬 WhatsApp</a>
+            <a href="https://github.com/username" target="_blank" rel="noopener" aria-label="GitHub">💻 GitHub</a>
+            <a href="https://www.linkedin.com/in/username" target="_blank" rel="noopener" aria-label="LinkedIn">🔗 LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> M Kabilan • Built with ❤️ and vanilla HTML/CSS</div>
+  </footer>
+
+  <script>
+    // Simple theme toggle (light <-> dark)
+    const toggle = document.getElementById('themeToggle');
+    const ROOT_KEY = 'mk-theme';
+    const applyTheme = t => document.documentElement.style.colorScheme = t;
+    const saved = localStorage.getItem(ROOT_KEY);
+    if (saved) applyTheme(saved);
+    toggle?.addEventListener('click', () => {
+      const next = (document.documentElement.style.colorScheme || 'dark') === 'dark' ? 'light' : 'dark';
+      applyTheme(next); localStorage.setItem(ROOT_KEY, next);
+    });
+
+    // Contact form: open mail client with prefilled content + inline feedback
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Portfolio contact from ' + name);
+      const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+      window.location.href = `mailto:mkabilan@example.com?subject=${subject}&body=${body}`;
+      const s = document.getElementById('formStatus');
+      s.style.display = 'inline-block';
+      s.textContent = 'Thanks! Your email client should open now.';
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
